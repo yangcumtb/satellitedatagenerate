@@ -38,20 +38,5 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        for (int i = 0; i < 1000; i++) {
-            FirstLine firstLine = new FirstLine(i);
-            SecondLine secondLine = new SecondLine(i);
-            System.out.println(firstLine.toString());
-            System.out.println(secondLine.toString());
-            if (firstLine.toString().length() != 69) {
-                System.out.println("错误1！");
-            }
-            if (secondLine.toString().length() != 69) {
-                System.out.println("错误2！");
-            }
-        }
-
-
     }
 }
