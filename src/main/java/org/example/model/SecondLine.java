@@ -38,6 +38,11 @@ public class SecondLine {
     //校验码
     public String checksum;
 
+    /**
+     * 构造函数，根据序列号随机初始化对象
+     *
+     * @param serialNum 序列号
+     */
     public SecondLine(Integer serialNum) {
         this.lineNum = "2";
         this.satelliteNum = String.valueOf(25544 + serialNum);
@@ -57,6 +62,11 @@ public class SecondLine {
         this.checksum = "4";
     }
 
+    /**
+     * tostring方法的重载，符合格式要求
+     *
+     * @return
+     */
     @Override
     public String toString() {
         if (ascendNodeEquinox.length() != 8) {
@@ -71,16 +81,35 @@ public class SecondLine {
         return lineNum + " " + satelliteNum + " " + orbitInclination + " " + ascendNodeEquinox + " " + eccentricity + " " + perigeeAngular + " " + flatNearAngle + " " + averageMovement + orbitNum + checksum;
     }
 
+    /**
+     * 生成两浮点数之间的随机数
+     *
+     * @param min 下限
+     * @param max 上线
+     * @return 返回结果
+     */
     public static double generateRandomNumber(double min, double max) {
         Random random = new Random();
         return random.nextDouble() * (max - min) + min;
     }
 
+    /**
+     * 生成两整数之间的随机数
+     *
+     * @param min 下限
+     * @param max 上限
+     * @return 返回结果
+     */
     public static int generateRandomInt(int min, int max) {
         Random random = new Random();
         return random.nextInt((max - min) + 1) + min;
     }
 
+    /**
+     * 轨道倾角在50-80，100-130之间随机
+     *
+     * @return
+     */
     public static String generateOrbitInclination() {
         double randomValue = generateRandomInt(0, 1);
         double randomValue1 = generateRandomNumber(50, 80);
@@ -88,13 +117,17 @@ public class SecondLine {
 
         double result = (randomValue == 0) ? randomValue1 : randomValue2;
 
-
         DecimalFormat decimalFormat = new DecimalFormat("000.0000");
         String res = decimalFormat.format(result);
         res = res.replaceAll("^0+", " "); // 替换开头的0为一个或多个空格
         return res;
     }
 
+    /**
+     * 1-360随机8字符浮点数生成
+     *
+     * @return
+     */
     public static String generateAscendNodeEquinox() {
         double randomValue = generateRandomNumber(1, 360);
         DecimalFormat decimalFormat = new DecimalFormat("000.0000");
@@ -103,6 +136,11 @@ public class SecondLine {
         return res;
     }
 
+    /**
+     * 平均运动，13-16
+     *
+     * @return
+     */
     public static String generateAverageMovement() {
         double randomValue = generateRandomNumber(13, 16);
         DecimalFormat decimalFormat = new DecimalFormat("00.00000000");
@@ -110,6 +148,13 @@ public class SecondLine {
     }
 
 
+    /**
+     * 用空格占位符补充字符位数不够的数据
+     *
+     * @param str
+     * @param length
+     * @return
+     */
     public static String padString(String str, int length) {
         if (str.length() >= length) {
             return str;

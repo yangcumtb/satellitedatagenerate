@@ -48,6 +48,11 @@ public class FirstLine {
     //校验码
     public String checksum;
 
+    /**
+     * 构造函数，根据序列号来随机初始化
+     *
+     * @param serialNum 序列号
+     */
     public FirstLine(Integer serialNum) {
         this.satelliteoribitName = "ISS (ZARYA)-" + serialNum;
         this.lineNum = "1";
@@ -66,6 +71,11 @@ public class FirstLine {
         this.checksum = "1";
     }
 
+    /**
+     * 转字符方法重载
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return lineNum + " " + satelliteNum + satelliteType + " " + "98067A   23173.82006554  .00016543  00000+0  29418-3 0  9991";
